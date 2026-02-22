@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DIET Bhavnagar – District Institute of Education and Training</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    /* ===== CSS VARIABLES – Edit these to customize colors ===== */
+    :root {
+      --primary:       #1a3c6e;   /* Deep government blue */
+      --primary-dark:  #0f2548;
+      --accent:        #e8841a;   /* Saffron accent */
+      --accent2:       #138a36;   /* India green */
+      --bg:            #f5f7fa;
+      --white:         #ffffff;
+      --text:          #1e2532;
+      --text-muted:    #5a6478;
+      --border:        #d0d7e3;
+      --ribbon-bg:     #0f2548;
+      --ribbon-text:   #ffd878;
+      --header-h:      140px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== TOP STRIP ===== */
+    .top-strip {
+      background: var(--primary-dark);
+      color: #cdd8f0;
+      font-size: 0.72rem;
+      padding: 4px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .top-strip a { color: #ffd878; font-size: 0.72rem; }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--white);
+      border-bottom: 4px solid var(--accent);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .header-logos { display: flex; align-items: center; gap: 14px; }
+    .header-logos img { height: 80px; object-fit: contain; }
+    .header-logos .divider { width: 2px; height: 70px; background: var(--border); }
+    .header-title { flex: 1; min-width: 220px; }
+    .header-title .dept {
+      font-size: 0.78rem;
+      color: var(--accent2);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .header-title h1 {
+      font-family: 'Noto Serif', serif;
+      font-size: clamp(1.05rem, 2.5vw, 1.5rem);
+      color: var(--primary-dark);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    .header-title .sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .header-right { text-align: right; font-size: 0.75rem; color: var(--text-muted); }
+    .header-right .date { font-weight: 600; color: var(--primary); }
+
+    /* ===== NAV ===== */
+    nav {
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li { position: relative; }
+    nav ul li a {
+      display: block;
+      padding: 13px 18px;
+      color: #cdd8f5;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+    }
+    /* Dropdown */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--primary-dark);
+      min-width: 200px;
+      flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    nav ul li:hover ul { display: flex; }
+    nav ul li ul li a { padding: 10px 16px; font-size: 0.79rem; }
+
+    /* ===== MARQUEE / RIBBON ===== */
+    .ribbon {
+      background: var(--ribbon-bg);
+      color: var(--ribbon-text);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 7px 0;
+      border-bottom: 2px solid var(--accent);
+    }
+    .ribbon-label {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 0 14px;
+      white-space: nowrap;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .ribbon marquee { font-size: 0.8rem; flex: 1; }
+    .ribbon marquee a { color: var(--ribbon-text); }
+    .ribbon marquee a:hover { color: #fff; }
+
+    /* ===== LAYOUT ===== */
+    .main-wrap { max-width: 1280px; margin: 0 auto; padding: 20px 16px; display: grid; grid-template-columns: 1fr 300px; gap: 20px; }
+    @media(max-width:900px){ .main-wrap { grid-template-columns: 1fr; } }
+
+    /* ===== HERO / BANNER ===== */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      border-radius: 6px;
+      padding: 36px 32px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -40px; top: -40px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .hero h2 { font-family: 'Noto Serif', serif; font-size: 1.6rem; margin-bottom: 8px; }
+    .hero p { font-size: 0.9rem; opacity: 0.85; max-width: 520px; line-height: 1.65; }
+    .hero-stats { display: flex; gap: 28px; margin-top: 20px; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat .num { font-size: 1.8rem; font-weight: 700; color: var(--ribbon-text); }
+    .stat .lbl { font-size: 0.72rem; opacity: 0.8; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* ===== SECTION HEADING ===== */
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .sec-head h3 {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+    .sec-head .bar { flex: 1; height: 2px; background: var(--border); }
+    .sec-head .bar-accent { width: 40px; height: 2px; background: var(--accent); margin-right: 6px; }
+
+    /* ===== CARDS GRID ===== */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 16px;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .card:hover { box-shadow: 0 4px 18px rgba(26,60,110,0.12); transform: translateY(-2px); }
+    .card .icon { font-size: 2rem; margin-bottom: 8px; }
+    .card h4 { font-size: 0.82rem; font-weight: 600; color: var(--primary); }
+    .card p  { font-size: 0.73rem; color: var(--text-muted); margin-top: 4px; }
+
+    /* ===== NOTIFICATIONS / SCHEDULES ===== */
+    .list-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .list-box-head {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .list-box-head a { color: var(--ribbon-text); font-size: 0.75rem; }
+    .list-box ul { list-style: none; }
+    .list-box ul li {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .list-box ul li:last-child { border-bottom: none; }
+    .list-box ul li .bullet { color: var(--accent); font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .list-box ul li a { color: var(--primary); }
+    .list-box ul li .date { font-size: 0.7rem; color: var(--text-muted); white-space: nowrap; }
+    .list-box ul li .new-badge {
+      background: #d32f2f; color: #fff;
+      font-size: 0.6rem; font-weight: 700;
+      padding: 1px 5px; border-radius: 3px;
+      flex-shrink: 0; align-self: center;
+      animation: blink 1.2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar { display: flex; flex-direction: column; gap: 18px; }
+    .sidebar-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .sidebar-box-head {
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 9px 14px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    .sidebar-box ul { list-style: none; }
+    .sidebar-box ul li {
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem;
+    }
+    .sidebar-box ul li:last-child { border-bottom: none; }
+    .sidebar-box ul li a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      color: var(--primary);
+      transition: background 0.15s;
+    }
+    .sidebar-box ul li a:hover { background: #f0f4ff; text-decoration: none; }
+    .sidebar-box ul li a .arr { margin-left: auto; color: var(--accent); font-size: 0.65rem; }
+
+    /* Gallery */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 8px; }
+    .gallery-grid img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 3px; cursor: pointer; }
+
+    /* ===== PHOTO GALLERY SECTION ===== */
+    .photo-section { margin-bottom: 24px; }
+    .photos-scroll { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+    .photos-scroll img { height: 160px; border-radius: 6px; flex-shrink: 0; object-fit: cover; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--primary-dark);
+      color: #8eaacc;
+      padding: 28px 24px 12px;
+      margin-top: 30px;
+    }
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    @media(max-width:700px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-grid h4 { color: #fff; font-size: 0.82rem; margin-bottom: 10px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .footer-grid p, .footer-grid li { font-size: 0.75rem; line-height: 1.7; }
+    .footer-grid ul { list-style: none; }
+    .footer-grid ul li a { color: #8eaacc; }
+    .footer-grid ul li a:hover { color: #ffd878; }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      border-top: 1px solid #1e3a5c;
+      padding-top: 10px;
+      font-size: 0.7rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .footer-bottom a { color: #ffd878; }
+
+    /* ===== EDIT PANEL ===== */
+    .edit-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 22px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(232,132,26,0.45);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: transform 0.2s;
+    }
+    .edit-btn:hover { transform: scale(1.05); }
+
+    .edit-panel {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 24px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      width: 340px;
+      max-height: 75vh;
+      overflow-y: auto;
+      z-index: 998;
+      padding: 18px;
+      font-size: 0.82rem;
+    }
+    .edit-panel h4 { font-size: 0.9rem; color: var(--primary-dark); margin-bottom: 14px; font-weight: 700; }
+    .edit-panel label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-top: 10px; margin-bottom: 3px; font-weight: 600; }
+    .edit-panel input, .edit-panel textarea, .edit-panel select {
+      width: 100%; padding: 7px 10px; border: 1px solid var(--border); border-radius: 5px; font-size: 0.79rem; font-family: inherit;
+    }
+    .edit-panel textarea { resize: vertical; min-height: 60px; }
+    .edit-panel .ep-btn {
+      background: var(--primary); color: #fff; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 0.79rem; margin-top: 10px; width: 100%;
+    }
+    .edit-panel .ep-btn:hover { background: var(--primary-dark); }
+    .edit-section { border-top: 1px solid var(--border); margin-top: 14px; padding-top: 10px; }
+    .edit-section h5 { font-size: 0.78rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #fff; border-radius: 8px; max-width: 560px; width: 90%;
+      padding: 28px; position: relative; max-height: 85vh; overflow-y: auto;
+    }
+    .modal h3 { font-family: 'Noto Serif', serif; color: var(--primary-dark); margin-bottom: 12px; }
+    .modal p  { font-size: 0.85rem; line-height: 1.7; color: var(--text); }
+    .modal .close { position: absolute; top: 14px; right: 18px; font-size: 1.4rem; cursor: pointer; color: var(--text-muted); background: none; border: none; }
+    .modal form { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+    .modal form input, .modal form textarea, .modal form select {
+      padding: 9px 12px; border: 1px solid var(--border); border-radius: 5px; font-size: 0.82rem; font-family: inherit;
+    }
+    .modal form textarea { resize: vertical; min-height: 80px; }
+    .modal form button {
+      background: var(--primary); color: #fff; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: 600;
+    }
+
+    /* Responsive */
+    @media(max-width:600px){
+      .hero { padding: 22px 18px; }
+      header { flex-direction: column; text-align: center; }
+      .header-logos { justify-content: center; }
+    }
+
+    /* Table for schedule */
+    .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+    .schedule-table th {
+      background: var(--primary); color: #fff; padding: 9px 10px; text-align: left; font-weight: 600; letter-spacing: 0.03em;
+    }
+    .schedule-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .schedule-table tr:hover td { background: #f0f4ff; }
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.68rem; font-weight: 600;
+    }
+    .badge-upcoming { background: #e3f0ff; color: #1a3c6e; }
+    .badge-ongoing  { background: #e8f5e9; color: #1b5e20; }
+    .badge-completed{ background: #f5f5f5; color: #555; }
+  </style>
+</head>
+<body>
+
+<!-- ===== TOP STRIP ===== -->
+<div class="top-strip">
+  <span>🇮🇳 &nbsp;Government of Gujarat &nbsp;|&nbsp; Department of Education</span>
+  <span>
+    <a href="https://gcert.gujarat.gov.in/" target="_blank">GCERT Gandhinagar</a> &nbsp;|&nbsp;
+    <a href="https://www.gujarat.gov.in/" target="_blank">Gujarat Govt Portal</a> &nbsp;|&nbsp;
+    <a href="#contact">Contact Us</a>
+  </span>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-logos">
+    <!-- Government of India Emblem -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/120px-Emblem_of_India.svg.png" alt="Emblem of India" title="Government of India"/>
+    <div class="divider"></div>
+    <!-- Government of Gujarat Logo -->
+    <img src="https://gcert.gujarat.gov.in/gcert/images/gujarat-logo.png" alt="Government of Gujarat" title="Government of Gujarat" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/7/7e/Gujarat_government_logo.png/120px-Gujarat_government_logo.png'"/>
+  </div>
+  <div class="header-title">
+    <div class="dept">Department of Education, Government of Gujarat</div>
+    <h1>District Institute of Education and Training (D.I.E.T.)</h1>
+    <div class="sub">Bhavnagar District &nbsp;|&nbsp; Under GCERT, Gandhinagar</div>
+  </div>
+  <div class="header-right">
+    <div class="date" id="live-date"></div>
+    <div id="live-time" style="font-size:1.1rem;font-weight:700;color:var(--primary-dark);"></div>
+    <div style="margin-top:6px;">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/National_Flag_of_Gujarat.svg/80px-National_Flag_of_Gujarat.svg.png" alt="" style="height:28px;" onerror="this.style.display='none'"/>
+    </div>
+  </div>
+</header>
+
+<!-- ===== NAVIGATION ===== -->
+<nav>
+  <ul>
+    <li><a href="#home" class="active">🏠 Home</a></li>
+    <li>
+      <a href="#about">About Us ▾</a>
+      <ul>
+        <li><a href="#about">About DIET</a></li>
+        <li><a href="#about">Vision &amp; Mission</a></li>
+        <li><a href="#about">Staff Directory</a></li>
+        <li><a href="#about">Organizational Structure</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#training">Training ▾</a>
+      <ul>
+        <li><a href="#schedule">Training Schedule</a></li>
+        <li><a href="#training">In-Service Training</a></li>
+        <li><a href="#training">Pre-Service Training</a></li>
+        <li><a href="#training">B.Ed. Program</a></li>
+      </ul>
+    </li>
+    <li><a href="#notifications">Notifications</a></li>
+    <li><a href="#gr">Govt. Resolutions</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#links">Useful Links</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ===== RIBBON ===== -->
+<div class="ribbon">
+  <div class="ribbon-label">🔔 Latest Updates</div>
+  <marquee behavior="scroll" direction="left" scrollamount="4" id="ribbon-marquee">
+    &nbsp;&nbsp;&nbsp;
+    📢 <a href="#">New Training Schedule for March 2025 Published</a> &nbsp;|&nbsp;
+    📢 <a href="#">B.Ed. Semester IV Examination Form Deadline: 28 Feb 2025</a> &nbsp;|&nbsp;
+    📢 <a href="#">Government Resolution dated 15-Feb-2025 regarding Teacher Training Norms</a> &nbsp;|&nbsp;
+    📢 <a href="#">In-Service Training for Primary School Teachers – Batch 3 Starting 01 March 2025</a> &nbsp;|&nbsp;
+    📢 <a href="#">GCERT Workshop at Gandhinagar – Nominations invited by 25 Feb 2025</a>
+  </marquee>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div id="home" class="main-wrap">
+
+  <!-- LEFT / MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <h2>Empowering Education in Bhavnagar District</h2>
+      <p>DIET Bhavnagar is dedicated to enhancing the quality of education through comprehensive teacher training, B.Ed. programmes, and continuous professional development initiatives under the Department of Education, Government of Gujarat.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="num" id="stat-trainings">120+</div><div class="lbl">Trainings Conducted</div></div>
+        <div class="stat"><div class="num" id="stat-teachers">5000+</div><div class="lbl">Teachers Trained</div></div>
+        <div class="stat"><div class="num" id="stat-bed">300+</div><div class="lbl">B.Ed. Students</div></div>
+        <div class="stat"><div class="num" id="stat-grs">45+</div><div class="lbl">Govt. Resolutions</div></div>
+      </div>
+    </div>
+
+    <!-- QUICK LINKS CARDS -->
+    <div class="sec-head">
+      <div class="bar-accent"></div><h3>Quick Access</h3><div class="bar"></div>
+    </div>
+    <div class="cards" id="quick-cards">
+      <div class="card" onclick="openModal('training-modal')">
+        <div class="icon">📅</div>
+        <h4>Training Schedule</h4>
+        <p>View upcoming &amp; ongoing trainings</p>
+      </div>
+      <div class="card" onclick="openModal('notif-modal')">
+        <div class="icon">🔔</div>
+        <h4>Notifications</h4>
+        <p>Circulars &amp; official notices</p>
+      </div>
+      <div class="card" onclick="openModal('gr-modal')">
+        <div class="icon">📋</div>
+        <h4>Govt. Resolutions</h4>
+        <p>GRs &amp; policy documents</p>
+      </div>
+      <div class="card" onclick="document.getElementById('schedule').scrollIntoView()">
+        <div class="icon">🎓</div>
+        <h4>B.Ed. Programme</h4>
+        <p>Pre-service teacher education</p>
+      </div>
+      <div class="card" onclick="openModal('upload-modal')">
+        <div class="icon">📤</div>
+        <h4>Upload Document</h4>
+        <p>Add new files &amp; documents</p>
+      </div>
+      <div class="card" onclick="document.getElementById('gallery').scrollIntoView()">
+        <div class="icon">🖼️</div>
+        <h4>Photo Gallery</h4>
+        <p>Events &amp; activities</p>
+      </div>
+    </div>
+
+    <!-- TRAINING SCHEDULE TABLE -->
+    <div id="schedule" style="margin-bottom:24px;">
+      <div class="sec-head">
+        <div class="bar-accent"></div><h3>Training Schedule</h3><div class="bar"></div>
+      </div>
+      <div class="list-box">
+        <div class="list-box-head">
+          📅 Upcoming &amp; Recent Trainings
+          <a href="#" onclick="openModal('add-schedule-modal'); return false;">+ Add Training</a>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="schedule-table" id="schedule-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Training Name</th>
+                <th>Target Group</th>
+                <th>Dates</th>
+                <th>Venue</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="schedule-body">
+              <tr>
+                <td>1</td>
+                <td>Classroom Management Techniques</td>
+                <td>Primary School Teachers</td>
+                <td>01–03 Mar 2025</td>
+                <td>DIET Campus, Bhavnagar</td>
+                <td><span class="badge badge-upcoming">Upcoming</span></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Inclusive Education Practices</td>
+                <td>Upper Primary Teachers</td>
+                <td>20–22 Feb 2025</td>
+                <td>Govt. School, Sihor</td>
+                <td><span class="badge badge-ongoing">Ongoing</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Assessment &amp; Evaluation Workshop</td>
+                <td>Secondary Teachers</td>
+                <td>10–12 Feb 2025</td>
+                <td>DIET Campus, Bhavnagar</td>
+                <td><span class="badge badge-completed">Completed</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Digital Literacy for Educators</td>
+                <td>All Teachers</td>
+                <td>05–06 Mar 2025</td>
+                <td>DIET Campus, Bhavnagar</td>
+                <td><span class="badge badge-upcoming">Upcoming</span></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>B.Ed. Teaching Practice Orientation</td>
+                <td>B.Ed. Students</td>
+                <td>15 Mar 2025</td>
+                <td>DIET Campus, Bhavnagar</td>
+                <td><span class="badge badge-upcoming">Upcoming</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    <div id="notifications" style="margin-bottom:24px;">
+      <div class="sec-head">
+        <div class="bar-accent"></div><h3>Notifications &amp; Circulars</h3><div class="bar"></div>
+      </div>
+      <div class="list-box">
+        <div class="list-box-head">
+          🔔 Recent Notifications
+          <a href="#" onclick="openModal('add-notif-modal'); return false;">+ Add</a>
+        </div>
+        <ul id="notif-list">
+          <li>
+            <span class="bullet">▶</span>
+            <div>
+              <a href="#">B.Ed. Semester IV Examination Form – Last date 28 Feb 2025</a>
+              <div class="date">22 Feb 2025</div>
+            </div>
+            <span class="new-badge">NEW</span>
+          </li>
+          <li>
+            <span class="bullet">▶</span>
+            <div>
+              <a href="#">GCERT Workshop Nominations – Invited by 25 Feb 2025</a>
+              <div class="date">20 Feb 2025</div>
+            </div>
+            <span class="new-badge">NEW</span>
+          </li>
+          <li>
+            <span class="bullet">▶</span>
+            <div>
+              <a href="#">Annual Training Calendar 2025-26 Published</a>
+              <div class="date">15 Feb 2025</div>
+            </div>
+          </li>
+          <li>
+            <span class="bullet">▶</span>
+            <div>
+              <a href="#">Holiday List for March 2025</a>
+              <div class="date">10 Feb 2025</div>
+            </div>
+          </li>
+          <li>
+            <span class="bullet">▶</span>
+            <div>
+              <a href="#">Revised Guidelines for In-Service Teacher Training</a>
+              <div class="date">05 Feb 2025</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GOVT. RESOLUTIONS -->
+    <div id="gr" style="margin-bottom:24px;">
+      <div class="sec-head">
+        <div class="bar-accent"></div><h3>Government Resolutions</h3><div class="bar"></div>
+      </div>
+      <div class="list-box">
+        <div class="list-box-head">
+          📋 Government Resolutions (GR)
+          <a href="#" onclick="openModal('add-gr-modal'); return false;">+ Add GR</a>
+        </div>
+        <ul id="gr-list">
+          <li>
+            <span class="bullet">▶</span>
+            <div>
+              <a href="#">GR No. EDU/2025/CR-44 – Teacher Training Norms &amp; Standards (15 Feb 2025)</a>
+              <div class="date">15 Feb 2025</div>
+            </div>
+            <span class="new-badge">NEW</span>
+          </li>
+          <li>
+            <span class="bullet">▶</span>
+            <div>
+              <a href="#">GR No. EDU/2024/CR-112 – B.Ed. Admission Guidelines 2025-26</a>
+              <div class="date">28 Jan 2025</div>
+            </div>
+          </li>
+          <li>
+            <span class="bullet">▶</span>
+            <div>
+              <a href="#">GR No. EDU/2024/CR-98 – Revised Pay Scale for DIET Faculty</a>
+              <div class="date">10 Jan 2025</div>
+            </div>
+          </li>
+          <li>
+            <span class="bullet">▶</span>
+            <div>
+              <a href="#">GR No. EDU/2024/CR-75 – Annual Training Calendar Circular</a>
+              <div class="date">05 Dec 2024</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PHOTO GALLERY -->
+    <div id="gallery" class="photo-section">
+      <div class="sec-head">
+        <div class="bar-accent"></div><h3>Photo Gallery</h3><div class="bar"></div>
+      </div>
+      <div class="photos-scroll" id="gallery-scroll">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=280&h=160&fit=crop" alt="Training Session"/>
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=280&h=160&fit=crop" alt="Workshop"/>
+        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=280&h=160&fit=crop" alt="B.Ed Students"/>
+        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=280&h=160&fit=crop" alt="Classroom"/>
+        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=280&h=160&fit=crop" alt="Seminar"/>
+        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=280&h=160&fit=crop" alt="Event"/>
+      </div>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:8px;">ℹ️ Replace sample images with your actual event photos. Use the Edit Panel (orange button) to add photos.</p>
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Important Links -->
+    <div class="sidebar-box">
+      <div class="sidebar-box-head">🔗 Important Links</div>
+      <ul id="links-list">
+        <li><a href="https://gcert.gujarat.gov.in/" target="_blank">GCERT Gandhinagar <span class="arr">↗</span></a></li>
+        <li><a href="https://www.gujarat.gov.in/" target="_blank">Gujarat Govt Portal <span class="arr">↗</span></a></li>
+        <li><a href="https://www.ncert.nic.in/" target="_blank">NCERT <span class="arr">↗</span></a></li>
+        <li><a href="https://ncte.gov.in/" target="_blank">NCTE <span class="arr">↗</span></a></li>
+        <li><a href="https://diksha.gov.in/" target="_blank">DIKSHA Portal <span class="arr">↗</span></a></li>
+        <li><a href="https://www.education.gov.in/" target="_blank">Ministry of Education <span class="arr">↗</span></a></li>
+        <li><a href="https://samagra.education.gov.in/" target="_blank">Samagra Shiksha <span class="arr">↗</span></a></li>
+        <li><a href="#" onclick="openModal('add-link-modal'); return false;">+ Add Link <span class="arr">✎</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Downloads -->
+    <div class="sidebar-box">
+      <div class="sidebar-box-head">📥 Downloads</div>
+      <ul id="downloads-list">
+        <li><a href="#">Training Calendar 2025-26 <span class="arr">↓</span></a></li>
+        <li><a href="#">B.Ed. Prospectus 2025 <span class="arr">↓</span></a></li>
+        <li><a href="#">Teacher Training Forms <span class="arr">↓</span></a></li>
+        <li><a href="#">Annual Report 2024 <span class="arr">↓</span></a></li>
+        <li><a href="#">Leave Application Form <span class="arr">↓</span></a></li>
+        <li><a href="#" onclick="openModal('add-download-modal'); return false;">+ Add Download <span class="arr">✎</span></a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div id="contact" class="sidebar-box">
+      <div class="sidebar-box-head">📞 Contact Us</div>
+      <div style="padding:14px;font-size:0.78rem;line-height:1.8;" id="contact-info">
+        <strong>DIET Bhavnagar</strong><br/>
+        📍 <span id="addr">Near GSRTC Bus Depot, Bhavnagar - 364001, Gujarat</span><br/>
+        📞 <span id="phone">0278-XXXXXXX</span><br/>
+        ✉️ <span id="email">diet.bhavnagar@gujarat.gov.in</span><br/>
+        🕐 Office Hours: Mon–Sat, 10:30 AM – 6:10 PM<br/>
+        <br/>
+        <strong>Head Office:</strong><br/>
+        GCERT, Gandhinagar<br/>
+        <a href="https://gcert.gujarat.gov.in/" target="_blank">gcert.gujarat.gov.in</a>
+      </div>
+    </div>
+
+    <!-- RTI -->
+    <div class="sidebar-box">
+      <div class="sidebar-box-head">📜 RTI &amp; Transparency</div>
+      <ul>
+        <li><a href="#">RTI Application Form <span class="arr">↗</span></a></li>
+        <li><a href="#">Public Information Officer <span class="arr">↗</span></a></li>
+        <li><a href="#">Annual Reports <span class="arr">↗</span></a></li>
+        <li><a href="#">Tender Notices <span class="arr">↗</span></a></li>
+      </ul>
+    </div>
+
+  </aside>
+
+</div><!-- /.main-wrap -->
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>About DIET Bhavnagar</h4>
+      <p>District Institute of Education and Training (DIET) Bhavnagar functions under the Department of Education, Government of Gujarat and GCERT Gandhinagar. It provides pre-service and in-service training to teachers of Bhavnagar district.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#schedule">Training Schedule</a></li>
+        <li><a href="#notifications">Notifications</a></li>
+        <li><a href="#gr">Govt. Resolutions</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Government Portals</h4>
+      <ul>
+        <li><a href="https://www.india.gov.in/" target="_blank">India.gov.in</a></li>
+        <li><a href="https://www.gujarat.gov.in/" target="_blank">Gujarat Govt</a></li>
+        <li><a href="https://gcert.gujarat.gov.in/" target="_blank">GCERT</a></li>
+        <li><a href="https://www.ncert.nic.in/" target="_blank">NCERT</a></li>
+        <li><a href="https://diksha.gov.in/" target="_blank">DIKSHA</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>DIET Bhavnagar, Gujarat<br/>
+      📞 0278-XXXXXXX<br/>
+      ✉️ diet.bhavnagar@gujarat.gov.in<br/>
+      🕐 Mon–Sat: 10:30–18:10</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 DIET Bhavnagar | Department of Education, Government of Gujarat</span>
+    <span>Designed &amp; Maintained by DIET Bhavnagar &nbsp;|&nbsp; <a href="#">Site Map</a> &nbsp;|&nbsp; <a href="#">Disclaimer</a> &nbsp;|&nbsp; <a href="#">Privacy Policy</a></span>
+  </div>
+</footer>
+
+<!-- ===== EDIT PANEL BUTTON ===== -->
+<button class="edit-btn" onclick="toggleEditPanel()">⚙️ Customize Website</button>
+
+<div class="edit-panel" id="edit-panel">
+  <h4>⚙️ Website Customizer</h4>
+  <p style="font-size:0.72rem;color:#888;margin-bottom:10px;">Edit the website content below. Changes reflect instantly.</p>
+
+  <div class="edit-section">
+    <h5>🎨 Colors</h5>
+    <label>Primary Color (Blue)</label>
+    <input type="color" value="#1a3c6e" oninput="document.documentElement.style.setProperty('--primary', this.value)"/>
+    <label>Accent Color (Orange)</label>
+    <input type="color" value="#e8841a" oninput="document.documentElement.style.setProperty('--accent', this.value)"/>
+  </div>
+
+  <div class="edit-section">
+    <h5>🏢 Office Details</h5>
+    <label>Address</label>
+    <input type="text" id="ep-addr" value="Near GSRTC Bus Depot, Bhavnagar - 364001, Gujarat" oninput="document.getElementById('addr').textContent=this.value"/>
+    <label>Phone</label>
+    <input type="text" id="ep-phone" value="0278-XXXXXXX" oninput="document.getElementById('phone').textContent=this.value"/>
+    <label>Email</label>
+    <input type="text" id="ep-email" value="diet.bhavnagar@gujarat.gov.in" oninput="document.getElementById('email').textContent=this.value"/>
+  </div>
+
+  <div class="edit-section">
+    <h5>📣 Marquee / Ribbon Text</h5>
+    <label>Add update to ribbon (press Enter):</label>
+    <input type="text" id="ep-ribbon" placeholder="Type new update text..." onkeydown="if(event.key==='Enter'){addRibbonItem(this.value);this.value=''}"/>
+    <button class="ep-btn" onclick="let v=document.getElementById('ep-ribbon').value;if(v){addRibbonItem(v);document.getElementById('ep-ribbon').value=''}">Add to Ribbon</button>
+  </div>
+
+  <div class="edit-section">
+    <h5>📊 Statistics</h5>
+    <label>Trainings Conducted</label>
+    <input type="text" value="120+" oninput="document.getElementById('stat-trainings').textContent=this.value"/>
+    <label>Teachers Trained</label>
+    <input type="text" value="5000+" oninput="document.getElementById('stat-teachers').textContent=this.value"/>
+    <label>B.Ed. Students</label>
+    <input type="text" value="300+" oninput="document.getElementById('stat-bed').textContent=this.value"/>
+  </div>
+
+  <div class="edit-section" style="font-size:0.75rem;color:#888;margin-top:14px;">
+    <strong>💡 Tips:</strong><br/>
+    • Click <b>"+ Add Training"</b> in the schedule to add rows.<br/>
+    • Click <b>"+ Add"</b> in Notifications to add notices.<br/>
+    • Click <b>"+ Add GR"</b> to add Govt. Resolutions.<br/>
+    • Click <b>"+ Add Link"</b> in sidebar to add useful links.<br/>
+    • All changes can be saved by exporting the page (Ctrl+S).
+  </div>
+</div>
+
+<!-- ===== MODALS ===== -->
+
+<!-- Add Schedule -->
+<div class="modal-overlay" id="add-schedule-modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('add-schedule-modal')">✕</button>
+    <h3>📅 Add Training to Schedule</h3>
+    <form onsubmit="addSchedule(event)">
+      <input type="text" id="sch-name" placeholder="Training Name *" required/>
+      <input type="text" id="sch-group" placeholder="Target Group (e.g., Primary School Teachers)" required/>
+      <input type="text" id="sch-dates" placeholder="Dates (e.g., 01–03 Mar 2025)" required/>
+      <input type="text" id="sch-venue" placeholder="Venue" required/>
+      <select id="sch-status">
+        <option value="upcoming">Upcoming</option>
+        <option value="ongoing">Ongoing</option>
+        <option value="completed">Completed</option>
+      </select>
+      <button type="submit">✅ Add Training</button>
+    </form>
+  </div>
+</div>
+
+<!-- Add Notification -->
+<div class="modal-overlay" id="add-notif-modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('add-notif-modal')">✕</button>
+    <h3>🔔 Add Notification</h3>
+    <form onsubmit="addNotification(event)">
+      <input type="text" id="notif-title" placeholder="Notification Title *" required/>
+      <input type="text" id="notif-link" placeholder="Link URL (optional)"/>
+      <input type="text" id="notif-date" placeholder="Date (e.g., 22 Feb 2025)"/>
+      <button type="submit">✅ Add Notification</button>
+    </form>
+  </div>
+</div>
+
+<!-- Add GR -->
+<div class="modal-overlay" id="add-gr-modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('add-gr-modal')">✕</button>
+    <h3>📋 Add Government Resolution</h3>
+    <form onsubmit="addGR(event)">
+      <input type="text" id="gr-title" placeholder="GR Title / Description *" required/>
+      <input type="text" id="gr-link" placeholder="Link to PDF (optional)"/>
+      <input type="text" id="gr-date" placeholder="Date (e.g., 15 Feb 2025)"/>
+      <button type="submit">✅ Add GR</button>
+    </form>
+  </div>
+</div>
+
+<!-- Add Link -->
+<div class="modal-overlay" id="add-link-modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('add-link-modal')">✕</button>
+    <h3>🔗 Add Useful Link</h3>
+    <form onsubmit="addLink(event)">
+      <input type="text" id="link-name" placeholder="Link Name *" required/>
+      <input type="text" id="link-url" placeholder="URL (https://...)" required/>
+      <button type="submit">✅ Add Link</button>
+    </form>
+  </div>
+</div>
+
+<!-- Add Download -->
+<div class="modal-overlay" id="add-download-modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('add-download-modal')">✕</button>
+    <h3>📥 Add Download</h3>
+    <form onsubmit="addDownload(event)">
+      <input type="text" id="dl-name" placeholder="Document Name *" required/>
+      <input type="text" id="dl-url" placeholder="Link to file (optional)"/>
+      <button type="submit">✅ Add Download</button>
+    </form>
+  </div>
+</div>
+
+<!-- Generic info modals -->
+<div class="modal-overlay" id="training-modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('training-modal')">✕</button>
+    <h3>📅 Training Schedule</h3>
+    <p>Scroll down to see the full Training Schedule table. Click <b>"+ Add Training"</b> to add new entries.</p>
+  </div>
+</div>
+<div class="modal-overlay" id="notif-modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('notif-modal')">✕</button>
+    <h3>🔔 Notifications</h3>
+    <p>Scroll down to see Notifications section. Click <b>"+ Add"</b> to post new notices.</p>
+  </div>
+</div>
+<div class="modal-overlay" id="gr-modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('gr-modal')">✕</button>
+    <h3>📋 Government Resolutions</h3>
+    <p>Scroll down to see the Govt. Resolutions section. Click <b>"+ Add GR"</b> to add new resolutions.</p>
+  </div>
+</div>
+<div class="modal-overlay" id="upload-modal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('upload-modal')">✕</button>
+    <h3>📤 Upload Document</h3>
+    <p style="margin-bottom:12px;">To share documents, upload them to Google Drive / OneDrive and paste the public link below to add to the Downloads section.</p>
+    <form onsubmit="addDownload(event, true)">
+      <input type="text" id="dl-name" placeholder="Document Name *" required/>
+      <input type="text" id="dl-url" placeholder="Paste shareable link here"/>
+      <button type="submit">✅ Add to Downloads</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // ===== Date & Time =====
+  function updateClock() {
+    const now = new Date();
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    document.getElementById('live-date').textContent = days[now.getDay()] + ', ' + now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+    document.getElementById('live-time').textContent = now.toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // ===== Edit Panel =====
+  function toggleEditPanel() {
+    const panel = document.getElementById('edit-panel');
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+  }
+
+  // ===== Modals =====
+  function openModal(id) {
+    document.getElementById(id).classList.add('open');
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+  }
+  document.querySelectorAll('.modal-overlay').forEach(el => {
+    el.addEventListener('click', function(e) {
+      if (e.target === el) el.classList.remove('open');
+    });
+  });
+
+  // ===== Add Schedule Row =====
+  let scheduleCount = 5;
+  function addSchedule(e) {
+    e.preventDefault();
+    scheduleCount++;
+    const name    = document.getElementById('sch-name').value;
+    const group   = document.getElementById('sch-group').value;
+    const dates   = document.getElementById('sch-dates').value;
+    const venue   = document.getElementById('sch-venue').value;
+    const status  = document.getElementById('sch-status').value;
+    const badgeClass = status === 'upcoming' ? 'badge-upcoming' : status === 'ongoing' ? 'badge-ongoing' : 'badge-completed';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${scheduleCount}</td><td>${name}</td><td>${group}</td><td>${dates}</td><td>${venue}</td><td><span class="badge ${badgeClass}">${status.charAt(0).toUpperCase()+status.slice(1)}</span></td>`;
+    document.getElementById('schedule-body').insertBefore(tr, document.getElementById('schedule-body').firstChild);
+    closeModal('add-schedule-modal');
+    e.target.reset();
+    document.getElementById('schedule').scrollIntoView({behavior:'smooth'});
+  }
+
+  // ===== Add Notification =====
+  function addNotification(e) {
+    e.preventDefault();
+    const title = document.getElementById('notif-title').value;
+    const link  = document.getElementById('notif-link').value || '#';
+    const date  = document.getElementById('notif-date').value || new Date().toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'});
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="bullet">▶</span><div><a href="${link}">${title}</a><div class="date">${date}</div></div><span class="new-badge">NEW</span>`;
+    document.getElementById('notif-list').insertBefore(li, document.getElementById('notif-list').firstChild);
+    addRibbonItem('📢 ' + title);
+    closeModal('add-notif-modal');
+    e.target.reset();
+  }
+
+  // ===== Add GR =====
+  function addGR(e) {
+    e.preventDefault();
+    const title = document.getElementById('gr-title').value;
+    const link  = document.getElementById('gr-link').value || '#';
+    const date  = document.getElementById('gr-date').value || new Date().toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric'});
+    const li = document.createElement('li');
+    li.innerHTML = `<span class="bullet">▶</span><div><a href="${link}">${title}</a><div class="date">${date}</div></div><span class="new-badge">NEW</span>`;
+    document.getElementById('gr-list').insertBefore(li, document.getElementById('gr-list').firstChild);
+    closeModal('add-gr-modal');
+    e.target.reset();
+  }
+
+  // ===== Add Link =====
+  function addLink(e) {
+    e.preventDefault();
+    const name = document.getElementById('link-name').value;
+    const url  = document.getElementById('link-url').value;
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="${url}" target="_blank">${name} <span class="arr">↗</span></a>`;
+    const list = document.getElementById('links-list');
+    list.insertBefore(li, list.lastElementChild);
+    closeModal('add-link-modal');
+    e.target.reset();
+  }
+
+  // ===== Add Download =====
+  function addDownload(e, fromUpload) {
+    e.preventDefault();
+    const nameEl = fromUpload ? document.getElementById('dl-name') : document.getElementById('dl-name');
+    const urlEl  = fromUpload ? document.getElementById('dl-url')  : document.getElementById('dl-url');
+    const name = nameEl.value;
+    const url  = urlEl.value || '#';
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="${url}" target="_blank">${name} <span class="arr">↓</span></a>`;
+    const list = document.getElementById('downloads-list');
+    list.insertBefore(li, list.lastElementChild);
+    closeModal('add-download-modal');
+    closeModal('upload-modal');
+    e.target.reset();
+  }
+
+  // ===== Ribbon / Marquee =====
+  const ribbonItems = [];
+  function addRibbonItem(text) {
+    if (!text.trim()) return;
+    ribbonItems.unshift(text);
+    rebuildRibbon();
+  }
+  function rebuildRibbon() {
+    const m = document.getElementById('ribbon-marquee');
+    const existing = m.innerHTML;
+    m.innerHTML = ribbonItems.map(i => `📢 <a href="#">${i}</a>`).join(' &nbsp;|&nbsp; ') + ' &nbsp;|&nbsp; ' + existing;
+  }
+</script>
+</body>
+</html>
